@@ -46,4 +46,31 @@ Anytime they go shopping on your marketplace, they can quickly add any desired p
 2. Checkout split cart
 3. Remove split cart when cancel checkout or customer logout
 4. Get Seller Info for cart item
+
+Example:
+```
+{
+  customerCart {
+    id
+    total_quantity
+    is_virtual
+    items {
+      uid
+      id
+      quantity
+      product {
+        id
+        sku
+        uid
+        name
+      }
+      seller {
+        seller_id
+        seller_url
+        seller_name
+      }
+    }
+  }
+}
+```
 5. Get Store config enable/disable split cart feature

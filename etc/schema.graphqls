@@ -13,11 +13,11 @@ type Mutation {
     placeOrderSplitCart(
         sellerUrl: String!
         input: PlaceOrderInput
-    ): PlaceOrderOutput @resolver(class: "\\Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\PlaceOrder")
+    ): PlaceOrderOutput @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\PlaceOrder")
 }
 
-interface CartItemInterface {
-    seller: SplitCartSellerInfo @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\SellerInfo")
+interface CartItemInterface @typeResolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\CartItemTypeResolver") {
+    seller: SplitCartSellerInfo @resolver(class: "\\Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\SellerInfo")
 }
 
 type SplitCartSellerInfo {

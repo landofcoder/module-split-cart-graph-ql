@@ -104,11 +104,9 @@ class SellerInfo implements ResolverInterface
         }
         return [
             'model' => $cartItem,
-            'seller' => [
-                'seller_id' => $sellerId,
-                'seller_url' => $sellerUrl,
-                'seller_name' => $sellerName,
-            ]
+            'seller_id' => $sellerId,
+            'seller_url' => $sellerUrl,
+            'seller_name' => $sellerName
         ];
     }
 
