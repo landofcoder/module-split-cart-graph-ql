@@ -6,18 +6,18 @@ type StoreConfig @doc(description: "The type contains information about a store 
 }
 
 type Mutation {
-    initCheckoutSplitCart(input: SubmitSplitCartInput!): SplitCart! @doc(description: "Submit init split cart before checkout") @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\InitSplitCart")
+    initCheckoutSplitCart(input: SubmitSplitCartInput!): SplitCart! @doc(description: "Submit init split cart before checkout") @resolver(class: "Lofmp\\SplitCartGraphQl\\Model\\Resolver\\InitSplitCart")
 
-    removeSplitCart(input: removeSplitCartInput!): Boolean! @doc(description: "Remove split cart query, use when canel checkout, customer logout.") @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\RemoveSplitCart")
+    removeSplitCart(input: removeSplitCartInput!): Boolean! @doc(description: "Remove split cart query, use when canel checkout, customer logout.") @resolver(class: "Lofmp\\SplitCartGraphQl\\Model\\Resolver\\RemoveSplitCart")
 
     placeOrderSplitCart(
         sellerUrl: String!
         input: PlaceOrderInput
-    ): PlaceOrderOutput @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\PlaceOrder")
+    ): PlaceOrderOutput @resolver(class: "Lofmp\\SplitCartGraphQl\\Model\\Resolver\\PlaceOrder")
 }
 
-interface CartItemInterface @typeResolver(class: "Magento\\QuoteGraphQl\\Model\\Resolver\\CartItemTypeResolver") {
-    seller: SplitCartSellerInfo @resolver(class: "\\Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\SellerInfo")
+interface CartItemInterface {
+    seller: SplitCartSellerInfo @resolver(class: "\\Lofmp\\SplitCartGraphQl\\Model\\Resolver\\SellerInfo")
 }
 
 type SplitCartSellerInfo {
