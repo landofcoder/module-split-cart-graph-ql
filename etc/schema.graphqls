@@ -1,2 +1,44 @@
 # Copyright © Magento, Inc. All rights reserved.
 # See COPYING.txt for license details.
+
+type StoreConfig @doc(description: "The type contains information about a store config") {
+    lofmp_splitcart_enabled : String @doc(description: "Indicates whether split cart are enabled. Possible values: 1 (Yes) and 0 (No)")
+}
+
+type Mutation {
+    initCheckoutSplitCart(input: SubmitSplitCartInput!): SplitCart! @doc(description: "Submit init split cart before checkout") @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\InitSplitCart")
+
+    removeSplitCart(input: removeSplitCartInput!): Boolean! @doc(description: "Remove split cart query, use when canel checkout, customer logout.") @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\RemoveSplitCart")
+
+    placeOrderSplitCart(
+        sellerUrl: String!
+        input: PlaceOrderInput
+    ): PlaceOrderOutput @resolver(class: "\\Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\PlaceOrder")
+}
+
+interface CartItemInterface {
+    seller: SplitCartSellerInfo @resolver(class: "Lofmp\\SplitCartGraqhQl\\Model\\Resolver\\SellerInfo")
+}
+
+type SplitCartSellerInfo {
+    seller_id: Int
+    seller_url: String
+    seller_name: String
+}
+
+type SplitCart {
+    id: Int
+    parent_id: Int
+    quote_id: Int
+    is_active: Int
+    is_ordered: Int
+}
+
+input SubmitSplitCartInput {
+    seller_url: String!
+    cart_id: String!
+}
+
+input removeSplitCartInput {
+    cart_id: String!
+}
