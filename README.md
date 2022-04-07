@@ -43,8 +43,49 @@ Anytime they go shopping on your marketplace, they can quickly add any desired p
 ### Support Queries
 
 1. Init split cart before checkout
+
+Example:
+
+```
+mutation {
+    initCheckoutSplitCart(
+      input: {
+        seller_url: String!
+        cart_id: String!
+      }
+    ) {
+        id
+        parent_id
+        quote_id
+        is_active
+        is_ordered
+    }
+}
+```
 2. Checkout split cart
+
+```
+mutation {
+    placeOrderSplitCart(
+        sellerUrl: String
+        input: { cart_id: String }
+    ) {
+        order {
+            order_number
+            order_id
+        }
+    }
+}
+```
 3. Remove split cart when cancel checkout or customer logout
+
+```
+mutation {
+    removeSplitCart(
+        input: { cart_id: String }
+    )
+}
+```
 4. Get Seller Info for cart item
 
 Example:
@@ -74,3 +115,11 @@ Example:
 }
 ```
 5. Get Store config enable/disable split cart feature
+
+```
+{
+    storeConfig {
+        lofmp_splitcart_enabled
+    }
+}
+```
