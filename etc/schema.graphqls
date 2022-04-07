@@ -21,24 +21,24 @@ interface CartItemInterface {
 }
 
 type SplitCartSellerInfo {
-    seller_id: Int
-    seller_url: String
-    seller_name: String
+    seller_id: Int @doc(description: "Seller ID.")
+    seller_url: String @doc(description: "Seller Url Key.")
+    seller_name: String @doc(description: "Seller Name.")
 }
 
 type SplitCart {
     id: Int
-    parent_id: Int
-    quote_id: Int
-    is_active: Int
-    is_ordered: Int
+    parent_id: Int @doc(description: "Parent Quote Id.")
+    quote_id: Int @doc(description: "Child Quote ID.")
+    is_active: Int @doc(description: "Is Active.")
+    is_ordered: Int @doc(description: "Is ordered for this quote.")
 }
 
 input SubmitSplitCartInput {
-    seller_url: String!
-    cart_id: String!
+    seller_url: String! @doc(description: "Seller Url Key.")
+    cart_id: String! @doc(description: "Cart Marked ID.")
 }
 
 input removeSplitCartInput {
-    cart_id: String!
+    cart_id: String! @doc(description: "Cart Marked ID.")
 }
