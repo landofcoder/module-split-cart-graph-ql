@@ -39,3 +39,11 @@ Anytime they go shopping on your marketplace, they can quickly add any desired p
 - enable the module by running `php bin/magento module:enable Lofmp_SplitCartGraphQl`
 - apply database updates by running `php bin/magento setup:upgrade`\*
 - Flush the cache by running `php bin/magento cache:flush`
+
+### Support Queries
+
+1. Init split cart before checkout
+2. Checkout split cart
+3. Remove split cart when cancel checkout or customer logout
+4. Get Seller Info for cart item
+5. Get Store config enable/disable split cart feature
